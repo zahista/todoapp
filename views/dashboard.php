@@ -1,4 +1,4 @@
-<?php include __DIR__."/partials/header.php"; ?>
+<?php Core\View::render('partials/header', ['title' => $title]) ?>
 
 <body>
     <main class="container">
@@ -12,20 +12,8 @@
 
         <?php
 
-        $todos = [
-            [
-                "title" => "Zajít nakoupit",
-                "description" => "Zajdi do obchodu a kup máslo",
-                "done" => true,
-            ],
-            [
-                "title" => "Zajít se psem",
-                "description" => "Vyvenčiho kolem baráku alespoň na 10 minut.",
-                "done" => false,
-            ],
-        ];
-
         foreach ($todos as $todo) {
+
             echo '
             <article class="todo'; if($todo['done']) echo "--done";  echo '">
                 <div>
@@ -48,16 +36,16 @@
     </main>
 
     <div class="modal-overlay">
-        <form action="" class="form">
+        <form action="/TodoApp/" class="form" method="post">
             <h1 class="form__headline">Nový úkol</h1>
-            <input id="todo_input" type="text" required>
-            <input type="text" class="input--error" required>
-            <button class="button--primary" type="submit">Přihlášení</button>
+            <input name="todo" id="todo_input" type="text" placeholder="Úkol" required>
+            <input name="description" type="text" placeholder="Popis úkolu" required>
+            <button class="button--primary" type="submit">Přidat úkol</button>
         </form>
     </div>
 
-    <script src="../script.js"></script>
-    <script src="../modal.js"></script>
+    <script src="/TodoApp/script.js"></script>
+    <script src="/TodoApp/modal.js"></script>
 </body>
 
 </html>

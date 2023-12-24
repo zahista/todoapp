@@ -1,5 +1,4 @@
-
-<?php include __DIR__."/partials/header.php"; ?> 
+<?php Core\View::render('partials/header', ['title' => $title ?? "Registrace"]); ?>
 
 <body>
 
@@ -7,14 +6,14 @@
     </head>
 
     <main class="container--center">
-        <form action="" class="form">
+        <form action="/TodoApp/register" class="form" method="post">
             <h1 class="form__headline">Registrace</h1>
-            <input type="text" name="email" placeholder="Email" >
+            <input type="text" name="email" placeholder="Email">
             <input type="text" name="Password" placeholder="Heslo">
             <input type="text" name="Password" placeholder="Potvrdit heslo">
             <button class="button--primary" type="submit">Vytvořit účet</button>
             <div class="form__footer">
-                <p>Již máte účet? <a href="/PCS2023/TodoApp/views/login.php">Přihlaste se</a></p>
+                <p>Již máte účet? <a href="/TodoApp/login">Přihlaste se</a></p>
             </div>
         </form>
     </main>
