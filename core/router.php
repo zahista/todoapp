@@ -5,7 +5,7 @@ namespace Core;
 
 class Router
 {
-    private $routes = [];
+    public $routes = [];
 
     // Přidává novou trasu do routovacího systému pro GET metodu
     public function get($url, $controller, $callback)

@@ -2,30 +2,30 @@
 
 namespace App\Models;
 
-use Core\Dump;
 use Core\Model;
+use PDOStatement;
 
 class Todo extends Model
 {
-    public function all(): array 
-    {
-        return $this->database->query('SELECT * FROM todos');
-    }
-
-    public function find(int $id): array
-    {
-        return $this->database->query("SELECT * FROM todos where id = ?", [$id]);
-    }
+    protected $table = 'todos';
 
     public function whereDone(int $bool): array
     {
-        return $this->database->query("SELECT * FROM todos where done = ?", [$bool]);
+        return $this->database->query("SELECT * FROM $this->table where done = $bool");
     }
 
-    public function create($values)
+    public function create($values): PDOStatement
     {
-        return 
-        $this->database->query("INSERT INTO todos (title, description)
-        VALUES (?, ?)", $values);  
+        return $this->database->query("INSERT INTO $this->table (title, description, done, user_id) VALUES (?, ?, ?, ?)", $values);
+    }
+
+    public function makeTodoDone($todo_id) : array
+    {
+        return $this->database->query("UPDATE $this->table SET done = 1 WHERE id = $todo_id");
+    }
+
+    public function delete($todo_id)
+    {
+        return $this->database->query("DELETE FROM $this->table WHERE id = $todo_id");
     }
 }

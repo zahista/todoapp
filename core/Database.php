@@ -4,7 +4,6 @@ namespace Core;
 
 use PDO;
 
-
 class Database
 {
     public $pdo;
@@ -35,7 +34,6 @@ class Database
     {
 
         if ($values) {
-
             $values = array_values($values);
             $stmp = $this->pdo->prepare($query);
             $stmp->execute($values);

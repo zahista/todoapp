@@ -7,7 +7,7 @@
     <main class="container--center">
         <form action="/TodoApp/login" class="form" method="post">
             <h1 class="form__headline">Přihlásit se</h1>
-            <input type="text" name="email" placeholder="Email">
+            <input type="text" name="email" placeholder="Email" autofocus>
             <?php 
             if(isset($error))
             {

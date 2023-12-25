@@ -40,11 +40,6 @@ let date = new Date();
 console.log(date.getMonth() + 1);
 
 
-let input = document.getElementById('demo');
-
-demo.innerHTML = "Jsem z JS";
-
-
 
 let todo = document.querySelector('#todo_input');
 let todoValue = todo.getAttribute('value');
