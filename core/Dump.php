@@ -9,5 +9,6 @@ class Dump
         echo "<pre>";
         var_dump($variable);
         echo "</pre>";
+        die();
     }
 }

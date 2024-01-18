@@ -11,7 +11,6 @@
         </nav>
 
         <?php
-
         foreach ($todos as $todo) {
 
             echo '
@@ -53,7 +52,7 @@
             <input name="todo" id="todo_input" type="text" placeholder="Úkol" required autofocus>
             <input name="description" type="text" placeholder="Popis úkolu" required>
             <input name="done" type="hidden" value="0" required>
-            <input name="user_id" type="hidden" value=1 required>
+            <input name="user_id" type="hidden" value="<?php echo $_SESSION['user_id']?? "" ?>" required>
             <button class="button--primary" type="submit">Přidat úkol</button>
         </form>
     </div>

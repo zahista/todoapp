@@ -1,6 +1,7 @@
 <?php
 
 use Core\Router;
+use App\Controllers\ApiController;
 use App\Controllers\LoginController;
 use App\Controllers\DashboardController;
 
@@ -13,6 +14,7 @@ $router->get("/TodoApp/delete", DashboardController::class, 'deleteTodo');
 $router->post("/TodoApp/", DashboardController::class, 'createNewTodo');
 $router->get("/TodoApp/update", DashboardController::class, 'markTodoAsDone');
 
+$router->get("/TodoApp/api", ApiController::class, "index");
 
 $router->get("/TodoApp/login", LoginController::class, 'showLogin');
 $router->post("/TodoApp/login", LoginController::class, 'loginUser');

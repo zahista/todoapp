@@ -11,7 +11,7 @@ class Todo extends Model
 
     public function whereDone(int $bool): array
     {
-        return $this->database->query("SELECT * FROM $this->table where done = $bool");
+        return $this->mysql->dotaz("SELECT * FROM $this->table where done = $bool and user_id = {$_SESSION['user_id']}");
     }
 
     public function create($values): PDOStatement

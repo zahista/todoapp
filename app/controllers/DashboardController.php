@@ -5,6 +5,7 @@ namespace App\Controllers;
 use Core\Dump;
 use Core\View;
 use App\Models\Todo;
+use App\Services\Auth;
 
 class DashboardController
 {
@@ -17,12 +18,17 @@ class DashboardController
 
     public function index()
     {
-        return View::render('dashboard', [
-            'todos' => $this->todo->whereDone(0),
-            'todo_tab' => '--selected',
-            'done_tab' => '',
-            'title' => "Dashboard todo aplikace",
-        ]);
+        if (Auth::user()) {
+            return View::render('dashboard', [
+                'todos' => $this->todo->whereDone(0),
+                'todo_tab' => '--selected',
+                'done_tab' => '',
+                'title' => "Dashboard todo aplikace",
+                'user_id' => Auth::user(),
+            ]);
+        } else {
+            return header('location: /TodoApp/login');
+        }
     }
 
     public function done()
@@ -35,6 +41,12 @@ class DashboardController
         ]);
     }
 
+    public function createNewTodo($data)
+    {
+        $this->todo->create($data);
+        return header('location: /TodoApp/');
+    }
+
     public function markTodoAsDone()
     {
         $this->todo->makeTodoDone($_GET['todo_id']);
@@ -45,11 +57,5 @@ class DashboardController
     {
         $this->todo->delete($_GET['todo_id']);
         return header('location: /TodoApp/done');
-    }
-
-    public function createNewTodo($data)
-    {
-        $this->todo->create($data);
-        return header('location: /TodoApp/');
     }
 }

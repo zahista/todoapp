@@ -8,7 +8,7 @@ class Router
     public $routes = [];
 
     // Přidává novou trasu do routovacího systému pro GET metodu
-    public function get($url, $controller, $callback)
+    public function get($url, $controller, $callback, $middleware = [])
     {
         $this->addRoute($url, $controller, $callback, "GET");
     }
@@ -37,6 +37,7 @@ class Router
             $callback = $this->routes[$url]['callback'];
 
             $controllerInit = new $controller();
+
             $controllerInit->$callback($_POST ? $_POST : []);
         }
     }
