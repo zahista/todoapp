@@ -8,7 +8,7 @@ use App\Controllers\DashboardController;
 $router = new Router();
 
 //defince cest
-$router->get("/TodoApp/", DashboardController::class, 'index');
+$router->get("/TodoApp/", DashboardController::class, 'index', ['auth']);
 $router->get("/TodoApp/done", DashboardController::class, 'done');
 $router->get("/TodoApp/delete", DashboardController::class, 'deleteTodo');
 $router->post("/TodoApp/", DashboardController::class, 'createNewTodo');
@@ -22,6 +22,7 @@ $router->post("/TodoApp/login", LoginController::class, 'loginUser');
 
 $router->get("/TodoApp/register", LoginController::class, 'ShowRegisterForm');
 $router->post("/TodoApp/register", LoginController::class, 'registerUser');
+$router->get("/TodoApp/logout", LoginController::class, 'logout');
 
 
 //zjištění na jaké adrese 

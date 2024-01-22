@@ -1,6 +1,8 @@
 <?php Core\View::render('partials/header', ['title' => $title]) ?>
 
 <body>
+    <?php echo $user_id ?>
+    <a class="button--error" href="/TodoApp/logout">Odhlásit se</a>
     <main class="container">
         <nav class="tabs">
             <div>

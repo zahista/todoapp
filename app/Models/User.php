@@ -8,9 +8,16 @@ class User extends Model
 {
     protected $table = "users";
     
-
-    public function exists($email, $password)
+    public function create($data)
     {
-       return $this->database->query("select * from $this->table where email = '$email' and password = '$password'")[0];
+        $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+        return $this->database->query("INSERT INTO $this->table (email, password)
+        VALUES (?, ?)", $data);
+    }
+
+    public function emailExists($email)
+    {
+       return $this->database->query("select * from $this->table where email = '$email'")[0];
     }
 }

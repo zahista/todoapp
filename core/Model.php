@@ -21,8 +21,6 @@ class Model
         return $this->database->query("SELECT * FROM $this->table");
     }
 
-    
-
     public function find(int $id): array
     {
         return $this->database->query("SELECT * FROM $this->table where id = $id");

@@ -4,7 +4,6 @@ namespace Core;
 
 use mysqli;
 
-
 class Mysql
 {
     protected $connection;
@@ -23,7 +22,6 @@ class Mysql
             die("Connection failed: " . $this->connection->connect_error);
         }
     }
-
 
     public function dotaz(String $query, $values = null): array
     {

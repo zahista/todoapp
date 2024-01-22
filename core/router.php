@@ -38,6 +38,10 @@ class Router
 
             $controllerInit = new $controller();
 
+
+            
+
+
             $controllerInit->$callback($_POST ? $_POST : []);
         }
     }

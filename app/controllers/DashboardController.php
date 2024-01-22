@@ -38,6 +38,7 @@ class DashboardController
             'todo_tab' => '',
             'done_tab' => '--selected',
             'title' => "Dashboard todo aplikace",
+            'user_id' => Auth::user(),
         ]);
     }
 

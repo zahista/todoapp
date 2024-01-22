@@ -38,7 +38,6 @@ class Database
             $stmp = $this->pdo->prepare($query);
             $stmp->execute($values);
         } else {
-
             $stmp = $this->pdo->query($query)->fetchAll();
         }
 
