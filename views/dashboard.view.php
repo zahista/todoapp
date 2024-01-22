@@ -13,6 +13,7 @@
         </nav>
 
         <?php
+        
         foreach ($todos as $todo) {
 
             echo '
@@ -46,6 +47,7 @@
                   </article>';
         }
         ?>
+
     </main>
 
     <div class="modal-overlay">

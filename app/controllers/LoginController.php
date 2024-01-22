@@ -9,6 +9,7 @@ use App\Services\Auth;
 class LoginController
 {
     public User $userModel;
+
     public $errors =  [
         "wrong_credentials" => "Špatné přihlašovací údaje",
         "user_exists" => "Uživatel s těmito údaji už v databázi existuje.",
@@ -69,7 +70,7 @@ class LoginController
 
         // vezmeme email a najdeme usera a u něj zjistíme heslo 
         $user = $this->userModel->emailExists($data['email']);
-        
+
         if ($user){
             // vezmeme heslo z databáze (hash) a heslo z formuláře a proženeme to password_verify 
             if (password_verify($data['password'], $user['password'])) {
