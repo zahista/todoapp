@@ -29,6 +29,7 @@ $router->get("/TodoApp/logout", LoginController::class, 'logout');
 $currentUrl = $_SERVER['REQUEST_METHOD'] . $_SERVER['REQUEST_URI'];
 $currentUrl = parse_url($currentUrl)['path'];
 
+var_dump('ahoj Víťo');
 
 //spusť metodu pro tuto URL na konkrétním kontroleru
 $router->dispatch($currentUrl);
