@@ -20,7 +20,7 @@ class LoginController
         $this->userModel = new User();
     }
 
-    public function showLogin(): View
+    public function showLogin()
     {
         $error = $_GET['error'] ?? null;
 
